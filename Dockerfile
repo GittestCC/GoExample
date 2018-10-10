@@ -9,7 +9,7 @@ WORKDIR $GOPATH/src/github.com/yashdalfthegray/goecho
 COPY Gopkg.toml Gopkg.lock ./
 RUN dep ensure --vendor-only
 COPY . ./
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o $GOPATH/bin/app .
 
 EXPOSE 80
 ENTRYPOINT ["./app"]
